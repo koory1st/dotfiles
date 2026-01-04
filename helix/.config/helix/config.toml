@@ -1,0 +1,8 @@
+# ~/.config/helix/config.toml
+[keys.normal.C-y]
+# Open file(s) in the current window
+y = ":sh tmux new-window -n fx 'sh ~/.config/helix/yazi-picker.sh open'"
+# Open file(s) in a vertical split
+v = ":sh tmux new-window -n fx 'sh ~/.config/helix/yazi-picker.sh vsplit'"
+# Open file(s) in a horizontal split
+h = ":sh tmux new-window -n fx 'sh ~/.config/helix/yazi-picker.sh hsplit'"
