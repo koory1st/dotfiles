@@ -18,3 +18,5 @@ end
 zoxide init fish | source
 
 export EDITOR=hx
+
+fish_vi_key_bindings
