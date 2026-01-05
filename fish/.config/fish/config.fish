@@ -19,4 +19,9 @@ zoxide init fish | source
 
 export EDITOR=hx
 
-fish_vi_key_bindings
+# fish_vi_key_bindings
+
+abbr -a ll eza -l
+
+abbr -a lla eza -la
+abbr -a lt eza -T
