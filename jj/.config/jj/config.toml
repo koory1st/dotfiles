@@ -1,0 +1,6 @@
+[user]
+name = "Levy Gu"
+email = "32436334@qq.com"
+
+[ui]
+default-command = "log"
