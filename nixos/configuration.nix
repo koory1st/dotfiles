@@ -18,7 +18,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
+  networking.proxy.default = "http://192.168.31.210:7890/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
@@ -53,6 +53,19 @@
     LC_PAPER = "zh_CN.UTF-8";
     LC_TELEPHONE = "zh_CN.UTF-8";
     LC_TIME = "zh_CN.UTF-8";
+  };
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-fluent
+      (fcitx5-rime.override {
+        rimeDataPkgs = [
+          pkgs.rime-ice
+        ];
+      })
+    ];
   };
 
   # Enable the X11 windowing system.
@@ -108,12 +121,26 @@
 
   programs.fish.enable = true;
 
+  programs.dms-shell = {
+    enable = true;
+    # systemd = {
+    #   enable = true;
+    #   restartIfChanged = true;
+    # };
+    enableSystemMonitoring = true;
+    enableClipboard = true;
+    enableVPN = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+    
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.swaylock = {};
-  # programs.waybar.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -121,7 +148,7 @@
      git
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     alacritty fuzzel swaylock mako swayidle waybar sway
+     alacritty fuzzel swaylock mako swayidle sway
      hyprpanel
      stow
      zoxide

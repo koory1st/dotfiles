@@ -5,7 +5,7 @@ end
 starship init fish | source
 
 alias rebuild="sudo nixos-rebuild switch"
-alias vimnix="sudo vim /etc/nixos/configuration.nix"
+alias vimnix="sudo hx /etc/nixos/configuration.nix"
 alias nshell="nix-shell -p"
 alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj  && source ~/.config/fish/config.fish"
 alias yz="yazi"
