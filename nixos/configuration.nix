@@ -204,6 +204,12 @@
   services.openssh.enable = true;
  
   services = {
+    displayManager = {
+      dms-greeter = {
+        enable = true;
+        compositor.name = "niri";
+      };
+    };
     mihomo = {
       enable = true;
       configFile = "/home/levy/.dotfiles/mihomo/config.yaml";
