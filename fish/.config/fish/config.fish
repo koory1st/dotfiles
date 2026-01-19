@@ -7,7 +7,7 @@ starship init fish | source
 alias rebuild="sudo nixos-rebuild switch"
 alias vimnix="hx ~/.dotfiles/nixos/configuration.nix"
 alias nshell="nix-shell -p"
-alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj  && source ~/.config/fish/config.fish"
+alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 rime  && source ~/.config/fish/config.fish"
 alias stnix="sudo stow -d ~/.dotfiles/ nixos -t /etc/nixos"
 alias yz="yazi"
 
