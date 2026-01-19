@@ -136,6 +136,15 @@
     
   };
 
+  programs.dsearch = {
+    enable = true;
+
+    systemd = {
+      enable = true;
+      target = "default.target";
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   security.polkit.enable = true;
@@ -179,6 +188,8 @@
      neofetch
      microsoft-edge
      opencode
+     obsidian
+     rustup
   ];
   fonts.packages = with pkgs; [
      nerd-fonts.hack
@@ -188,6 +199,17 @@
   ];
   # 2. 关键：启用字体自动缓存（NixOS必加，否则字体不生效）
   fonts.enableFontDir = true;
+  fonts = {
+    fonts = with pkgs; [
+      adwaita-fonts
+      noto-fonts-color-emoji
+      nerd-fonts.symbols-only
+      # 以上三个几乎是必须安装的
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    ];
+  };
+  
   virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
