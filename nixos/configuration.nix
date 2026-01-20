@@ -190,24 +190,26 @@
      opencode
      obsidian
      rustup
+     mininet
+     # clash-verge-rev pkg-config dbus openssl_3 glib gtk3 libsoup_2_4 webkitgtk appimagekit librsvg
+     clashtui
+     v2rayn
   ];
-  fonts.packages = with pkgs; [
-     nerd-fonts.hack
-     nerd-fonts.jetbrains-mono# JetBrainsMono Nerd Font（JetBrains官方，颜值高）
-     nerd-fonts.fira-code      # FiraCode Nerd Font（连字友好，适合前端/Go）
-     nerd-fonts.meslo-lg       # MesloLG Nerd Font（终端/Oh My Zsh 标配）
-  ];
-  # 2. 关键：启用字体自动缓存（NixOS必加，否则字体不生效）
-  fonts.enableFontDir = true;
   fonts = {
-    fonts = with pkgs; [
-      adwaita-fonts
-      noto-fonts-color-emoji
-      nerd-fonts.symbols-only
-      # 以上三个几乎是必须安装的
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
+    packages = with pkgs; [
+       nerd-fonts.hack
+       nerd-fonts.jetbrains-mono# JetBrainsMono Nerd Font（JetBrains官方，颜值高）
+       nerd-fonts.fira-code      # FiraCode Nerd Font（连字友好，适合前端/Go）
+       nerd-fonts.meslo-lg       # MesloLG Nerd Font（终端/Oh My Zsh 标配）
+       adwaita-fonts
+       noto-fonts-color-emoji
+       nerd-fonts.symbols-only
+       # 以上三个几乎是必须安装的
+       noto-fonts-cjk-sans
+       noto-fonts-cjk-serif
     ];
+    # 2. 关键：启用字体自动缓存（NixOS必加，否则字体不生效）
+    fontDir.enable = true;
   };
   
   virtualisation.docker.enable = true;
