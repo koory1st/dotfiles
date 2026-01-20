@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  hardware.bluetooth.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,13 +19,14 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
-  # networking.proxy.default = "http://192.168.31.210:7890/";
+  # networking.proxy.default = "http://127.0.0.1:7890/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
   
   nix.settings = {
+    ssl-cert-file = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
     experimental-features = [ 
 	"nix-command" 
 	"flakes"
@@ -107,7 +109,7 @@
   users.users.levy = {
     isNormalUser = true;
     description = "levy";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio"];
     shell = pkgs.fish;
     packages = with pkgs; [
     #  thunderbird
@@ -194,6 +196,7 @@
      # clash-verge-rev pkg-config dbus openssl_3 glib gtk3 libsoup_2_4 webkitgtk appimagekit librsvg
      clashtui
      v2rayn
+     samba
   ];
   fonts = {
     packages = with pkgs; [
