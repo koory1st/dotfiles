@@ -23,10 +23,10 @@ export EDITOR=vim
 
 # fish_vi_key_bindings
 
-abbr -a ll eza -l
+alias ll="eza -l"
 
-abbr -a lla eza -la
-abbr -a lt eza -T
+alias lla="eza -la"
+alias lt="eza -T"
 
 if test -d /home/levy/tools/claw-code-main/rust/target/release
     set -gx PATH /home/levy/tools/claw-code-main/rust/target/release $PATH
