@@ -13,8 +13,8 @@ alias yz="yazi"
 
 atuin init fish | source
 
-if command -v neofetch >/dev/null
-    neofetch
+if command -v fastfetch >/dev/null
+    fastfetch
 end
 
 zoxide init fish | source
