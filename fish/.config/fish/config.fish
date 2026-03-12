@@ -28,4 +28,9 @@ abbr -a ll eza -l
 abbr -a lla eza -la
 abbr -a lt eza -T
 
+if test -d /home/levy/tools/claw-code-main/rust/target/release
+    set -gx PATH /home/levy/tools/claw-code-main/rust/target/release $PATH
+end
+
 fnm env --use-on-cd --shell fish | source
+
