@@ -13,10 +13,6 @@ alias yz="yazi"
 
 atuin init fish | source
 
-if command -v fastfetch >/dev/null
-    fastfetch
-end
-
 zoxide init fish | source
 
 export EDITOR=vim
@@ -32,5 +28,5 @@ if test -d /home/levy/tools/claw-code-main/rust/target/release
     set -gx PATH /home/levy/tools/claw-code-main/rust/target/release $PATH
 end
 
-fnm env --use-on-cd --shell fish | source
+
 
