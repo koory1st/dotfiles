@@ -130,12 +130,11 @@
     #   restartIfChanged = true;
     # };
     enableSystemMonitoring = true;
-    enableClipboard = true;
     enableVPN = true;
     enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
-    
+    enableClipboardPaste = true; 
   };
 
   programs.dsearch = {
@@ -171,15 +170,13 @@
      eza
      clipboard-jh
      jjui
-     neofetch
+     fastfetch
      starship
      jujutsu
      btop
      busybox
      docker
-     clash-rs
      croc
-     zed-editor
      navi
      fzf
      ripgrep
@@ -187,16 +184,16 @@
      gemini-cli
      fnm
      atuin
-     neofetch
      microsoft-edge
      opencode
+     clash-verge-rev
      obsidian
      rustup
      mininet
-     # clash-verge-rev pkg-config dbus openssl_3 glib gtk3 libsoup_2_4 webkitgtk appimagekit librsvg
-     clashtui
-     v2rayn
      samba
+     vscode
+     television
+     bat
   ];
   fonts = {
     packages = with pkgs; [
@@ -236,10 +233,6 @@
         enable = true;
         compositor.name = "niri";
       };
-    };
-    mihomo = {
-      enable = true;
-      configFile = "/home/levy/.dotfiles/mihomo/config.yaml";
     };
   };
 
