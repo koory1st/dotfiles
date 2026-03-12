@@ -19,7 +19,7 @@ end
 
 zoxide init fish | source
 
-export EDITOR=hx
+export EDITOR=vim
 
 # fish_vi_key_bindings
 
