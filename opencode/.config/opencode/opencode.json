@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "plugin": ["oh-my-openagent"],
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -8,8 +9,8 @@
         "baseURL": "http://192.168.31.210:1234/v1"
       },
       "models": {
-        "qwen3.5-27b-claude-4.6-opus-reasoning-distilled": {
-          "name": "qwen3.5-27b-claude-4.6-opus-reasoning-distilled"
+        "qwen-coder-next": {
+          "name": "qwen/qwen-coder-next"
         }
       }
     }

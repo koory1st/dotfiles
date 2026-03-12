@@ -1,0 +1,34 @@
+{
+  "agents": {
+    "sisyphus": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "prometheus": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "atlas": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "oracle": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "hephaestus": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "metis": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "momus": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "explore": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "librarian": {
+      "model": "lmstudio/qwen-coder-next"
+    },
+    "multimodal-looker": {
+      "model": "lmstudio/qwen-coder-next"
+    }
+  }
+}
