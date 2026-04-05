@@ -13,6 +13,7 @@ alias nshell="nix-shell -p"
 alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 rime cargo opencode --adopt && source ~/.config/fish/config.fish"
 alias stnix="sudo stow -d ~/.dotfiles/ nixos -t /etc/nixos"
 alias yz="yazi"
+alias hx="helix"
 
 # atuin shell history
 if command -v atuin >/dev/null 2>&1
@@ -41,6 +42,3 @@ alias lt="eza -T"
 if test -d /home/levy/tools/claw-code-main/rust/target/release
     set -gx PATH /home/levy/tools/claw-code-main/rust/target/release $PATH
 end
-
-
-
