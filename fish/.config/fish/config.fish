@@ -10,10 +10,15 @@ end
 alias rebuild="sudo nixos-rebuild switch"
 alias vimnix="hx ~/.dotfiles/nixos/configuration.nix"
 alias nshell="nix-shell -p"
-alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 rime cargo opencode --adopt && source ~/.config/fish/config.fish"
+alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 rime cargo opencode ghostty --adopt && source ~/.config/fish/config.fish"
 alias stnix="sudo stow -d ~/.dotfiles/ nixos -t /etc/nixos"
 alias yz="yazi"
 alias hx="helix"
+
+# tv shell history
+if command -v tv >/dev/null 2>&1
+    tv init fish | source
+end
 
 # atuin shell history
 if command -v atuin >/dev/null 2>&1
