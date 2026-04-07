@@ -1,1 +1,5 @@
 nixos/hardware-configuration.nix
+fcitx5/.local/share/
+fcitx5/.local/share/fcitx5/rime/build/
+fcitx5/.local/share/fcitx5/rime/sync/
+fcitx5/.local/share/fcitx5/rime/rime_ice.userdb/
