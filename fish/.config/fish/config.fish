@@ -10,7 +10,7 @@ end
 alias rebuild="sudo nixos-rebuild switch"
 alias vimnix="hx ~/.dotfiles/nixos/configuration.nix"
 alias nshell="nix-shell -p"
-alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 cargo opencode ghostty --adopt && source ~/.config/fish/config.fish"
+alias stowdot="stow -d ~/.dotfiles/ fish vim niri starship waybar helix jj fcitx5 cargo opencode ghostty television --adopt && source ~/.config/fish/config.fish"
 alias stnix="sudo stow -d ~/.dotfiles/ nixos -t /etc/nixos"
 alias yz="yazi"
 alias hx="helix"
@@ -30,7 +30,7 @@ if command -v zoxide >/dev/null 2>&1
     zoxide init fish | source
 end
 
-export EDITOR=vim
+export EDITOR=helix
 
 # fnm Node.js version manager
 if command -v fnm >/dev/null 2>&1
