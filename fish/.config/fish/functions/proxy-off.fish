@@ -8,6 +8,8 @@ function proxy-off
     set -e HTTPS_PROXY
     set -e ALL_PROXY
 
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
     # 提示代理已关闭
     echo "HTTP/HTTPS 代理已关闭"
 end

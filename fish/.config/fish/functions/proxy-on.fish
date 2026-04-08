@@ -5,6 +5,9 @@ function proxy-on
     set -x https_proxy http://127.0.0.1:7897
     set -x all_proxy socks5://127.0.0.1:7897 # 可选：添加 socks5 代理
 
+    git config --global http.proxy http://127.0.0.1:7897
+    git config --global https.proxy http://127.0.0.1:7897
+
     # 可选：对 curl/wget 等工具生效（部分工具优先读取小写变量）
     set -x HTTP_PROXY $http_proxy
     set -x HTTPS_PROXY $https_proxy
