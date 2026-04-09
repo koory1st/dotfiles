@@ -1,2 +1,9 @@
 [http]
 proxy = "127.0.0.1:7897"
+
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = "ustc"
+
+[source.ustc]
+registry = "https://mirrors.ustc.edu.cn/crates.io-index"
