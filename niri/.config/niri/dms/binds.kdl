@@ -49,6 +49,17 @@ binds {
         spawn "dms" "ipc" "call" "audio" "micmute";
     }
     
+    // Screenshots (grim + slurp + swappy)
+    Mod+Shift+S hotkey-overlay-title="Select Area to Screenshot" {
+        spawn "sh" "-c" "grim -g \"$(slurp)\" ~/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png";
+    }
+    Mod+Shift+Z hotkey-overlay-title="Screenshot Area & Edit" {
+        spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -";
+    }
+    Mod+Shift+X hotkey-overlay-title="Screenshot Full & Edit" {
+        spawn "sh" "-c" "grim - | swappy -f -";
+    }
+
     // BL
     XF86MonBrightnessUp allow-when-locked=true {
        spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
