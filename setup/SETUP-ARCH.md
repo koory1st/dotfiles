@@ -98,7 +98,13 @@ git config --global url."https://hub.gitmirror.com/".insteadOf https://github.co
 
 参见 [COMMON.md](COMMON.md#第五阶段基础工具安装--配置部署)
 
-> **注意**: Arch 上部分 CLI 工具通过 `yay` 或 `paru` 从 AUR 安装
+> **注意**: 
+> - Arch 上部分 CLI 工具通过 `yay` 或 `paru` 从 AUR 安装
+> - yazi 安装顺序：
+>   ```bash
+>   sudo pacman -S poppler-glib
+>   sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+>   ```
 
 ---
 

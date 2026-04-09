@@ -198,8 +198,8 @@ jj version
 
 ```bash
 # 通过 cargo 安装 (依赖 Rust)
+# 注意：yazi 在 Arch 上使用 paru 安装，见 SETUP-ARCH.md
 cargo install \
-  yazi \
   eza \
   bat \
   navi \
@@ -213,13 +213,15 @@ cargo install \
   bottom \
   --locked
 
-# 通过 apt 安装 (Ubuntu)
+# 通过系统包管理器安装
+# Ubuntu
 sudo apt install -y fzf ripgrep fd-find btop tree
 
 # 验证
-yazi --version
 eza --version
 ```
+
+> **Arch 用户**: yazi 及其依赖使用 `paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick` 安装
 
 ---
 
@@ -255,14 +257,24 @@ curl -f https://zed.dev/install.sh | sh
 zed --version
 ```
 
-### 6.3 Vim
+### 6.4 Leaf 编辑器 (Markdown)
+
+```bash
+# 安装 Leaf
+curl -fsSL https://raw.githubusercontent.com/RivoLink/leaf/main/scripts/install.sh | sh
+
+# 验证
+leaf --version
+```
+
+### 6.5 Vim
 
 ```bash
 sudo apt install vim
 cd ~/.dotfiles && stow --adopt vim
 ```
 
-### 6.4 Python 环境 (uv)
+### 6.6 Python 环境 (uv)
 
 ```bash
 # 安装 uv (依赖 Rust)
@@ -411,7 +423,7 @@ cargo install starship --locked
 stow --adopt starship
 stow --adopt tmux
 stow --adopt jj
-cargo install yazi eza bat navi television lazygit lazydocker fastfetch tldr gum --locked
+cargo install eza bat navi television lazygit lazydocker fastfetch tldr gum --locked
 
 echo "=== 第六阶段：开发工具 ==="
 sudo apt install helix
