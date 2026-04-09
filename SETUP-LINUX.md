@@ -383,17 +383,36 @@ sudo apt install vim
 cd ~/.dotfiles && stow vim
 ```
 
-### 6.4 Python 环境
+### 6.4 Python 环境 (uv)
 
 ```bash
 # 安装 uv (依赖 Rust)
 cargo install uv --locked
 
-# 安装 Python
-sudo apt install python3 python3-pip python3-venv
+# 配置 uv 镜像 (中国区)
+mkdir -p ~/.config/uv
+cat > ~/.config/uv/settings.toml << 'EOF'
+[pip]
+index-url = "https://mirrors.ustc.edu.cn/pypi/web/simple"
+trusted-host = ["mirrors.ustc.edu.cn"]
 
-# 配置 uv 镜像
-uv config set mirror https://mirrors.ustc.edu.cn/pypi/web/simple
+[python]
+pre-release = false
+EOF
+
+# 创建 Python 环境
+uv python install 3.12  # 安装 Python 3.12
+uv python list          # 查看已安装版本
+
+# 创建项目环境
+cd ~/my-project
+uv init                # 初始化项目
+uv add requests        # 添加依赖
+uv sync               # 同步环境
+
+# 或创建虚拟环境
+uv venv .venv
+source .venv/bin/activate
 ```
 
 ### 6.5 数据库
