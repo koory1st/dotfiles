@@ -51,3 +51,5 @@ alias lt="eza -T"
 if test -d /home/levy/tools/claw-code-main/rust/target/release
     set -gx PATH /home/levy/tools/claw-code-main/rust/target/release $PATH
 end
+
+export PATH="$HOME/.local/bin:$PATH"
