@@ -16,18 +16,18 @@
 └─────────────────────────────────────────────────────────────────┘
                                 ↓
 ┌─────────────────────────────────────────────────────────────────┐
-│  第三阶段：基础工具 (部分)                                         │
-│  jj 安装 → jj git clone --colocate dotfiles                     │
+│  第三阶段：SSH 配置 + jj + Dotfiles                                │
+│  SSH Key → jj 安装 → jj git clone --colocate dotfiles           │
 └─────────────────────────────────────────────────────────────────┘
                                 ↓
 ┌─────────────────────────────────────────────────────────────────┐
-│  第四阶段：基础工具安装 + 配置部署                                  │
-│  Fish 安装 → stow 部署 fish → Starship 安装 → stow 部署 → ...     │
+│  第四阶段：Fish + AI 工具 (优先)                                   │
+│  Fish 安装 → stow 部署 → opencode 安装                          │
 └─────────────────────────────────────────────────────────────────┘
                                 ↓
 ┌─────────────────────────────────────────────────────────────────┐
-│  第五阶段：AI 工具安装 + 配置部署                                  │
-│  npm 配置 → 安装 opencode → stow 部署 opencode                    │
+│  第五阶段：基础工具安装 + 配置部署                                  │
+│  Starship → stow 部署 → Tmux → jj 配置 → CLI 工具                │
 └─────────────────────────────────────────────────────────────────┘
                                 ↓
 ┌─────────────────────────────────────────────────────────────────┐
@@ -191,7 +191,7 @@ jj log --limit 1
 
 ---
 
-## 第四阶段：基础工具安装 + 配置部署
+## 第四阶段：Fish + AI 工具 (优先)
 
 ### 4.1 Fish Shell
 
@@ -201,38 +201,59 @@ echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
 
 # 部署配置
-cd ~/.dotfiles && stow fish
+cd ~/.dotfiles && stow --adopt fish
 
 # 启动 fish
 fish
 ```
 
-### 4.2 Starship 提示符
+### 4.2 AI 工具：OpenCode (优先安装)
+
+```bash
+# 配置 npm 镜像 (中国区)
+npm config set registry https://registry.npmmirror.com
+
+# 从官网下载 macOS 版本
+# https://opencode.com/download
+# 将 .app 放到 Applications 或可执行文件放到 PATH 中
+
+# 部署配置
+cd ~/.dotfiles && stow --adopt opencode
+
+# 验证
+opencode --version
+```
+
+---
+
+## 第五阶段：基础工具安装 + 配置部署
+
+### 5.1 Starship 提示符
 
 ```bash
 # 安装 Starship (依赖 Rust)
 cargo install starship --locked
 
 # 部署配置
-cd ~/.dotfiles && stow starship
+cd ~/.dotfiles && stow --adopt starship
 
 # 验证
 starship --version
 ```
 
-### 4.3 Tmux
+### 5.2 Tmux
 
 ```bash
 brew install tmux
 
 # 部署配置
-cd ~/.dotfiles && stow tmux
+cd ~/.dotfiles && stow --adopt tmux
 
 # 安装 tmuxinator (可选)
 brew install tmuxinator
 ```
 
-### 4.4 Git 配置
+### 5.3 Git 配置
 
 ```bash
 # Git 已在 Xcode CLI 中，安装新版本
@@ -247,18 +268,18 @@ git config --global init.defaultBranch main
 brew install gh
 ```
 
-### 4.5 jj 版本控制
+### 5.4 jj 版本控制
 
 ```bash
 # jj 已在第三阶段安装
 # 部署配置
-cd ~/.dotfiles && stow jj
+cd ~/.dotfiles && stow --adopt jj
 
 # 验证
 jj version
 ```
 
-### 4.6 CLI 工具批量安装
+### 5.5 CLI 工具批量安装
 
 ```bash
 # 通过 cargo 安装 (依赖 Rust)
@@ -521,23 +542,22 @@ jj config set --user.email "32436334@qq.com"
 jj git clone --colocate git@github.com:yourusername/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
-echo "=== 第四阶段：基础工具 ==="
-stow fish
-cargo install starship --locked
-stow starship
-stow tmux
-cargo install jj --locked
-stow jj
-cargo install yazi eza bat navi television lazygit lazydocker fastfetch tldr gum --locked
-
-echo "=== 第五阶段：AI 工具 ==="
+echo "=== 第四阶段：Fish + AI 工具 ==="
+stow --adopt fish
 npm config set registry https://registry.npmmirror.com
 # opencode 从官网下载
-stow opencode
+stow --adopt opencode
+
+echo "=== 第五阶段：基础工具 ==="
+cargo install starship --locked
+stow --adopt starship
+stow --adopt tmux
+stow --adopt jj
+cargo install yazi eza bat navi television lazygit lazydocker fastfetch tldr gum --locked
 
 echo "=== 第六阶段：开发工具 ==="
 brew install helix pnpm
-stow helix
+stow --adopt helix
 cargo install uv --locked
 
 echo "=== 完成 ==="
@@ -557,14 +577,14 @@ echo "运行 fish 进入 shell"
 | 5 | SSH | SSH Key 生成 + 配置 | 第三阶段 | `ssh -T git@github.com` |
 | 6 | 基础工具 | jj 安装 | 第三阶段 | `jj version` |
 | 7 | Dotfiles | jj git clone --colocate | 第三阶段 | `ls ~/.dotfiles` |
-| 8 | 基础工具 | Fish 配置 | 第四阶段 | `stow --adopt fish` |
-| 9 | 基础工具 | Starship | 第四阶段 | `cargo install starship` |
-| 10 | 基础工具 | Tmux | 第四阶段 | `stow --adopt tmux` |
-| 11 | 基础工具 | jj 配置 | 第四阶段 | `stow --adopt jj` |
-| 12 | 基础工具 | CLI 工具 | 第四阶段 | `yazi --version` |
-| 13 | AI 工具 | opencode | 第五阶段 | `opencode --version` |
-| 14 | 开发工具 | Helix, pnpm | 第六阶段 | `helix --version` |
-| 15 | 效率工具 | Docker, Raycast | 第七阶段 | `docker --version` |
+| 8 | **第四阶段** | **Fish 配置** | **stow --adopt fish** | `fish --version` |
+| 9 | **第四阶段** | **OpenCode (AI)** | **优先安装** | `opencode --version` |
+| 10 | 第五阶段 | Starship | 第五阶段 | `cargo install starship` |
+| 11 | 第五阶段 | Tmux | 第五阶段 | `stow --adopt tmux` |
+| 12 | 第五阶段 | jj 配置 | 第五阶段 | `stow --adopt jj` |
+| 13 | 第五阶段 | CLI 工具 | 第五阶段 | `yazi --version` |
+| 14 | 第六阶段 | Helix, pnpm | 第六阶段 | `helix --version` |
+| 15 | 第七阶段 | Docker, Raycast | 第七阶段 | `docker --version` |
 
 ---
 
